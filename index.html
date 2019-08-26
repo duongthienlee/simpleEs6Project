@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="site.css" />
+    <title>ES6/JS Simple Project</title>
+</head>
+
+<body>
+    <form id="weatherForm">
+        <label>Enter City </label>
+        <input type="text" name="city" /><br />
+        <label>Choose Degrees Type </label>
+        <select name="degreesType">
+            <option value="cel">Celsius</option>
+            <option value="fah">Fahrenheit</option>
+        </select><br />
+        <label>Distance from chosen city (1-50 km)</label>
+        <input min="1" max="50" type="number" name="distance" /><br />
+    </form>
+    <button onclick="submitQueryParams()">Check weather Info</button>
+    <p id="result"></p>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
