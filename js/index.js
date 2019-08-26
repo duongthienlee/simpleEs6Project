@@ -2,11 +2,11 @@ const api = 'https://api.openweathermap.org/data/2.5/';
 const apiKey = '&appid=d3e01b57c8e66d056d203423da6682d2';
 
 async function fetchWeather(objParams) {
-    const { city, degreesType, distance } = objParams;
+    const { city, degreesType, cnt } = objParams;
     // get coordinate of the chosen city
     const { lon, lat } = await getCoord(city) || {};
     //api call with Cities in cycle
-    let url = `${api}find?lat=${lat}&lon=${lon}&units=metric&cnt=${distance}${apiKey}`;
+    let url = `${api}find?lat=${lat}&lon=${lon}&units=metric&cnt=${cnt}${apiKey}`;
     let response = await fetch(url);
     let data = await response.json();
     console.log("data", data);

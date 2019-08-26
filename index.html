@@ -9,15 +9,16 @@
 
 <body>
     <form id="weatherForm">
+        <p>Current weather</p>
         <label>Enter City </label>
-        <input type="text" name="city" /><br />
+        <input type="text" name="city" value="Helsinki" required /><br />
         <label>Choose Degrees Type </label>
         <select name="degreesType">
             <option value="cel">Celsius</option>
             <option value="fah">Fahrenheit</option>
         </select><br />
-        <label>Distance from chosen city (1-50 km)</label>
-        <input min="1" max="50" type="number" name="distance" /><br />
+        <label>Cities range (1-50 km)</label>
+        <input min="1" max="50" type="number" name="cnt" value="1" required /><br />
     </form>
     <button onclick="submitQueryParams()">Check weather Info</button>
     <p id="result"></p>
