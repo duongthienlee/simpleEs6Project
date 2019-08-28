@@ -1,0 +1,58 @@
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 28px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    user-select: none;
+
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    transition: all .3s ease;
+
+    &:hover {
+        background-color: #ccc;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    &:after {
+        content: "";
+        position: absolute;
+        display: none;
+        /* Style the checkmark/indicator */
+        left: 7px;
+        top: 3px;
+        width: 7px;
+        height: 12px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        transform: rotate(45deg);
+    }
+
+    &_active {
+        background-color: #e96e50;
+
+        /* Show the checkmark when checked */
+        &:after {
+            display: block;
+        }
+
+        &:hover {
+            background-color: scale-color(#e96e50, $lightness: -30%);
+        }
+    }
+
+    &:focus {
+        outline: 5px auto #e96e50;
+        outline-offset: -2px;
+    }
+}
