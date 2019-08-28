@@ -3,25 +3,33 @@
 
 <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="site.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/index.css" />
     <title>ES6/JS Simple Project</title>
 </head>
 
 <body>
-    <form id="weatherForm">
-        <p>Current weather</p>
-        <label>Enter City </label>
-        <input type="text" name="city" value="Helsinki" required /><br />
-        <label>Choose Degrees Type </label>
-        <select name="degreesType">
-            <option value="cel">Celsius</option>
-            <option value="fah">Fahrenheit</option>
-        </select><br />
-        <label>Cities range (1-50 km)</label>
-        <input min="1" max="50" type="number" name="cnt" value="1" required /><br />
-    </form>
-    <button onclick="submitQueryParams()">Check weather Info</button>
-    <p id="result"></p>
+    <div class="form-container">
+        <form id="weatherForm">
+            <div class="form-wrapper">
+                <h1>Weather in your city</h1>
+                <label>Enter City </label>
+                <input type="text" name="city" value="Helsinki" required /><br />
+                <label>Unit </label>
+                <select name="unit">
+                    <option value="celcius">Celsius</option>
+                    <option value="fahrenheit">Fahrenheit</option>
+                </select><br />
+            </div>
+        </form>
+        <div class="form-btn-wrapper">
+            <button onclick="submitQueryParams()">Search</button>
+        </div>
+    </div>
+    <table>
+        <tbody id="weatherFormResult">
+        </tbody>
+    </table>
     <script src="js/index.js"></script>
 </body>
 

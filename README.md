@@ -1,5 +1,5 @@
 # Simple weather project
 - Functionalities:
-    * Allow to query current weather from chosen city
+    * Allow to query current weather from chosen city, if omit country code, it will return the chosen cities in all country
     * Switch between Celsius and Fahrenheit
-    * Display list of available Cities in cycle. The circle ranging from 1 - 50 km
+### Live: https://duongthienlee.github.io/simpleEs6Project/
