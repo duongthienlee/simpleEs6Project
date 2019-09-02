@@ -22,14 +22,14 @@ const config = {
     }
   },
   plugins: [
-    () => {
+    /*() => {
       this.plugin("done", (stats) => {
         if (stats.compilation.errors && stats.compilation.errors.length && process.argv.indexOf("--watch") === -1) {
           console.log(stats.compilation.errors);
           process.exit(1); // or throw new Error('webpack build failed.');
         }
       });
-    },
+    },*/
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),

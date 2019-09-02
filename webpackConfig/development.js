@@ -1,5 +1,6 @@
 const webpack = require('webpack');
-const _ = require('lodash');
+//const _ = require('lodash');
+const merge = require('webpack-merge');
 const base = require('./base');
 
 const devConfig = {
@@ -19,4 +20,4 @@ const devConfig = {
   ]
 };
 
-module.exports = _.merge(base, devConfig);
+module.exports = merge(base, devConfig);

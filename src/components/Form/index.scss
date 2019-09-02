@@ -1,0 +1,48 @@
+form {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+
+    .form-group {
+        display: inline-block;
+        margin-bottom: 0;
+        vertical-align: middle;
+
+        label {
+            margin-bottom: 10px;
+            color: grey;
+        }
+
+        input {
+            height: 45px;
+            width: 215px;
+            padding: 12px 24px;
+            border-radius: 45px 0 0 45px;
+            font-size: 18px;
+            box-shadow: none;
+            border: 1px solid #c1593f;
+
+            &:focus {
+                outline: #c1593f auto 2px;
+            }
+
+            &::placeholder {
+                font-size: 14px;
+            }
+
+
+        }
+
+        input[type="submit"] {
+            cursor: pointer;
+            width: 85px;
+            font-size: 16px;
+            padding: 0px;
+            height: 45px;
+            color: #fff;
+            border-radius: 0 45px 45px 0;
+            margin-left: -4px;
+            background-color: #e96e50;
+        }
+    }
+}

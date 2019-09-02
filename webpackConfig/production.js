@@ -1,5 +1,6 @@
 const webpack = require('webpack');
-const _ = require('lodash');
+//const _ = require('lodash');
+const merge = require('webpack-merge');
 const base = require('./base');
 const productionConfig = {
   plugins: [
@@ -12,4 +13,4 @@ const productionConfig = {
   ]
 };
 
-module.exports = _.merge(base, productionConfig);
+module.exports = merge(base, productionConfig);
