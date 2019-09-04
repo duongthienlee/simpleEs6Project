@@ -2,22 +2,22 @@ import React, { useState } from "react"
 import TickBox from 'components/TickBox'
 import Form from 'components/Form'
 import TableResult from 'components/TableResult'
+import WelcomeMessage from 'components/WelcomeMessage'
 
-const api = 'https://api.openweathermap.org/data/2.5/'
-const apiKey = '&appid=eb110e4bb56f4a27e5e7e91f69a5e084'
+const API = 'https://api.openweathermap.org/data/2.5/'
+const API_KEY = '&appid=eb110e4bb56f4a27e5e7e91f69a5e084'
 
 const App = () => {
   const [citiesWeather, setCitiesWeather] = useState([])
   // const [uniqueCityWeather, setUniqueCityWeather] = useState([])
   const [userInput, setUserInput] = useState({ city: '', unit: 'cel', })//  trailing comma(s)
-  const isCelcius = userInput.unit === "cel" // detect fahrenheit & celcius mode
 
   async function fetchWeather() {
-    const { city } = userInput // object destructuring
-    let url = `${api}find?q=${city}&type=like&sort=population&units=metric${apiKey}`; //template literals and placeholders
+    let { city } = userInput // object destructuring
+    let url = `${API}find?q=${city}&type=like&sort=population&units=metric${API_KEY}`; //template literals and placeholders
     let response = await fetch(url)
     let data = await response.json()
-    const { list: citiesWeather } = data || {}
+    let { list: citiesWeather } = data || {}
     //  let uniqueSet = new Set();
 
     /* let uniqueList = citiesWeather.filter((item) => {
@@ -25,13 +25,14 @@ const App = () => {
        isNew && uniqueSet.add(key)
        return isNew
      })*/
-    console.log("citiesWeather", citiesWeather)
     return setCitiesWeather(citiesWeather)//, setUniqueCityWeather(uniqueList)
   }
 
+  let isCelcius = userInput.unit === "cel" // detect fahrenheit & celcius mode
 
   return (
     <div className="weather-app">
+      <WelcomeMessage />
       <div className="form-container">
         <h1>Weather in your city</h1>
         <Form
@@ -58,7 +59,6 @@ const App = () => {
         citiesWeather={citiesWeather}
         isCelcius={isCelcius}
       />
-
     </div>
   );
 };
