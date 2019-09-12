@@ -9,7 +9,6 @@ const API_KEY = '&appid=eb110e4bb56f4a27e5e7e91f69a5e084'
 
 const App = () => {
   const [citiesWeather, setCitiesWeather] = useState([])
-  // const [uniqueCityWeather, setUniqueCityWeather] = useState([])
   const [userInput, setUserInput] = useState({ city: '', unit: 'cel', })//  trailing comma(s)
 
   async function fetchWeather() {
@@ -18,17 +17,24 @@ const App = () => {
     let response = await fetch(url)
     let data = await response.json()
     let { list: citiesWeather } = data || {}
-    //  let uniqueSet = new Set();
 
-    /* let uniqueList = citiesWeather.filter((item) => {
-       let key = item.name, isNew = !uniqueSet.has(key);
-       isNew && uniqueSet.add(key)
-       return isNew
-     })*/
-    return setCitiesWeather(citiesWeather)//, setUniqueCityWeather(uniqueList)
+    /* this show the usage of filter function to filter response that have duplicated city name
+    ( this happen when you omit country code, for example, you search Berlin)
+    For now, I don't know what I could do with this, but just to show I can use filter function
+    The result will be shown on console only
+    */
+    let uniqueSet = new Set();
+    let uniqueList = citiesWeather.filter((item) => {
+      let key = item.name, isNew = !uniqueSet.has(key);
+      isNew && uniqueSet.add(key)
+      return isNew
+    })
+    console.log("Simple filter list of cities", uniqueList)
+    return setCitiesWeather(citiesWeather);
   }
 
   let isCelcius = userInput.unit === "cel" // detect fahrenheit & celcius mode
+
 
   return (
     <div className="weather-app">
@@ -48,7 +54,7 @@ const App = () => {
             isActive={userInput.unit === "cel"}
           />
           <TickBox
-            onClick={() => setUserInput({ ...userInput, unit: "fah" })}
+            onClick={() => setUserInput({ ...userInput, unit: "fah" })} //spread operator
             label={"Fahrenheit"}
             isActive={userInput.unit === "fah"}
           />
@@ -64,3 +70,18 @@ const App = () => {
 };
 
 export default App;
+class Clock extends Date {
+  constructor(dateStr) {
+    super(dateStr);
+  }
+
+  getFormattedDate() {
+    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    return `${this.getDate()}-${months[this.getMonth()]}-${this.getFullYear()}`;
+  }
+}
+
+console.log(new Clock('August 19, 1975 23:15:30').getFormattedDate());
+// expected output: "19-Aug-1975"

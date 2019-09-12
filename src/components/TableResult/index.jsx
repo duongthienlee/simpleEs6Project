@@ -1,5 +1,5 @@
 import React from 'react';
-import { convertTempMode } from 'components/helper'
+import { convertTempMode as converter } from 'components/helper'
 import PropTypes from 'prop-types';
 import './index.scss'
 const TableResult = ({ citiesWeather, isCelcius }) => {
@@ -18,8 +18,8 @@ const TableResult = ({ citiesWeather, isCelcius }) => {
                                 <img src={`http://openweathermap.org/images/flags/${country.toLowerCase()}.png`} />
                                 <b><i>&nbsp;{weather[0].description}</i></b>
                                 <p>
-                                    <span className="badge badge-info">{convertTempMode(isCelcius, temp)}</span>&nbsp;
-                    temperature from {convertTempMode(isCelcius, temp_min)} to {convertTempMode(isCelcius, temp_max)}, wind {wind.speed} m/s. clouds {clouds.all} %, {pressure} hpa
+                                    <span className="badge badge-info">{converter(isCelcius, temp)}</span>&nbsp;
+                    temperature from {converter(isCelcius, temp_min)} to {converter(isCelcius, temp_max)}, wind {wind.speed} m/s. clouds {clouds.all} %, {pressure} hpa
                                 </p>
                                 <p className="link">Geo coords [{coord.lat}, {coord.lon}] </p>
                             </td>
