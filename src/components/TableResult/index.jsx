@@ -6,7 +6,7 @@ const TableResult = ({ citiesWeather, isCelcius }) => {
     return (
         <table>
             <tbody id="weatherFormResult">
-                {citiesWeather.map((element, index) => {
+                {citiesWeather && citiesWeather.map((element, index) => {
                     let { coord, clouds, wind, name, main: { temp, pressure, temp_max, temp_min }, weather, sys: { country } } = element;
                     return (
                         <tr key={index}>

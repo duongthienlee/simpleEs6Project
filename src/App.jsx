@@ -23,13 +23,15 @@ const App = () => {
     For now, I don't know what I could do with this, but just to show I can use filter function
     The result will be shown on console only
     */
-    let uniqueSet = new Set();
-    let uniqueList = citiesWeather.filter((item) => {
-      let key = item.name, isNew = !uniqueSet.has(key);
-      isNew && uniqueSet.add(key)
-      return isNew
-    })
-    console.log("Simple filter list of cities", uniqueList)
+    if (citiesWeather) {
+      let uniqueSet = new Set();
+      let uniqueList = citiesWeather.filter((item) => {
+        let key = item.name, isNew = !uniqueSet.has(key);
+        isNew && uniqueSet.add(key)
+        return isNew
+      })
+      console.log("Simple filter list of cities", uniqueList)
+    }
     return setCitiesWeather(citiesWeather);
   }
 
@@ -61,10 +63,14 @@ const App = () => {
         </div>
         <div></div>
       </div>
-      <TableResult
-        citiesWeather={citiesWeather}
-        isCelcius={isCelcius}
-      />
+      {citiesWeather ?
+        <TableResult
+          citiesWeather={citiesWeather ? citiesWeather : []}
+          isCelcius={isCelcius}
+        />
+        :
+        <h3 className="error-message">The city name or country code are incorrect  </h3>
+      }
     </div>
   );
 };
